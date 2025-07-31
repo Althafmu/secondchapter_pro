@@ -1,0 +1,63 @@
+// lib/app/features/home/home_view.dart (Updated)
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'home_controller.dart';
+
+class HomeView extends GetView<HomeController> {
+  const HomeView({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    // IMPORTANT: The Scaffold and AppBar are removed from here.
+    // This widget is now just the content that will be displayed
+    // inside the DashboardView.
+    return ListView(
+      children: [
+        _buildSectionHeader('Dialog'),
+        _buildListItem('custom_check_dialog', onTap: controller.showCustomCheckDialog),
+        _buildListItem('custom_clear_dialog', onTap: controller.showCustomClearDialog),
+        _buildListItem('custom_text_dialog', onTap: () {}),
+
+        _buildSectionHeader('Toast Message'),
+        _buildListItem('show_Center_Toast', onTap: controller.showCenterToast),
+        _buildListItem('show_Bottom_Toast', onTap: controller.showBottomToast),
+
+        _buildSectionHeader('Text Field'),
+        _buildListItem('Custom Text Field', onTap: controller.openCustomTextField),
+        _buildListItem('Phone Number Text Field', onTap: controller.openPhoneTextField),
+        _buildListItem('Verification Code Text Field', onTap: controller.openVerificationCodeField),
+        _buildListItem('Phone Number Verified (Fake) Text Field', onTap: () {}),
+        _buildListItem('Verified Text (Fake) Field', onTap: () {}),
+
+        // --- NEW SECTIONS FROM IMAGE ---
+        _buildSectionHeader('Phone Number Verification'),
+        _buildListItem('Phone Number Verification Module', onTap: () {}),
+        _buildListItem('Phone Number Edit Module', onTap: () {}),
+
+        _buildSectionHeader('Custom ETC'),
+        _buildListItem('Custom Dash Line', onTap: () {}),
+        _buildListItem('Custom Indicator', onTap: () {}),
+        _buildListItem('Doh!! Slider', onTap: () {}),
+      ],
+    );
+  }
+
+  Widget _buildSectionHeader(String title) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
+      color: Colors.grey[200],
+      child: Text(
+        title,
+        style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+      ),
+    );
+  }
+
+  Widget _buildListItem(String title, {VoidCallback? onTap}) {
+    return ListTile(
+      title: Text(title),
+      onTap: onTap,
+      trailing: const Icon(Icons.arrow_forward_ios, size: 14),
+    );
+  }
+}
