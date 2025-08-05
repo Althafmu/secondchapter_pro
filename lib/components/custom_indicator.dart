@@ -1,12 +1,26 @@
 import 'package:flutter/material.dart';
 
 class CustomIndicator extends StatelessWidget {
-  final Duration duration;
+  final double size;
+  final double strokeWidth;
+  final Color color;
 
-  const CustomIndicator({super.key, required this.duration});
+  const CustomIndicator({
+    super.key,
+    this.size = 32.0,
+    this.strokeWidth = 3.0,
+    this.color = Colors.orangeAccent,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return const CircularProgressIndicator(); // Add timer logic if needed
+    return SizedBox(
+      width: size,
+      height: size,
+      child: CircularProgressIndicator(
+        strokeWidth: strokeWidth,
+        valueColor: AlwaysStoppedAnimation<Color>(color),
+      ),
+    );
   }
 }
