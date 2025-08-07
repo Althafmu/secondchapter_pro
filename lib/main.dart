@@ -17,7 +17,8 @@ void main() {
       initialRoute: AppPages.INITIAL,
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
-      themeMode: ThemeMode.system, // Automatically switch between light and dark themes
+      themeMode: ThemeMode
+          .system, // Automatically switch between light and dark themes
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
     ),

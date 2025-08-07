@@ -4,7 +4,7 @@ import 'package:secondchapter_pro/components/dashed_line_painter.dart';
 import 'dash_line_controller.dart';
 
 class DashLineView extends GetView<DashLineController> {
-  const DashLineView({Key? key}) : super(key: key);
+  const DashLineView({super.key});
 
   @override
   Widget build(BuildContext context) {

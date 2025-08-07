@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'splash_controller.dart';
+import 'package:secondchapter_pro/features/splash/splash_controller.dart';
 
-class SplashView extends GetView<SplashController> {
-  const SplashView({Key? key}) : super(key: key);
+class SplashView extends StatelessWidget {
+  const SplashView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // The controller is initialized automatically by GetX
-    // and will navigate after a delay.
-    return const Scaffold(
-      body: Center(
-        // You can replace this with your app's logo
-        child: FlutterLogo(size: 100),
-      ),
+    return GetBuilder<SplashController>(
+      init: SplashController(),
+      builder: (controller) {
+        return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      },
     );
   }
 }

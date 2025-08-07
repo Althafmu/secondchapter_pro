@@ -27,7 +27,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.DASHBOARD;
+  static const INITIAL = Routes.SPLASH;
 
   static final routes = [
     GetPage(
@@ -67,7 +67,7 @@ class AppPages {
       page: () => const PhoneEntryDemoView(),
       binding: PhoneEntryDemoBinding(),
     ),
-    
+
     GetPage(
       name: _Paths.CODE_VERIFY_DEMO,
       page: () => const CodeVerifyDemoView(),
@@ -88,6 +88,5 @@ class AppPages {
       page: () => const PhoneVerificationView(),
       binding: PhoneVerificationBinding(),
     ),
-
   ];
 }
