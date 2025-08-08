@@ -45,26 +45,29 @@ class _MediaPostWidgetState extends State<MediaPostWidget> {
           const SizedBox(height: 8),
 
           // Media Slider
-          AspectRatio(
-            aspectRatio: 3 / 4, // Typical portrait aspect ratio
-            child: PageView.builder(
-              controller: _pageController,
-              itemCount: mediaItems.length,
-              itemBuilder: (context, index) {
-                final item = mediaItems[index];
-                if (item.type == MediaType.video) {
-                  return VideoItemWidget(videoUrl: item.url);
-                } else {
-                  return CachedNetworkImage(
-                    imageUrl: item.url,
-                    fit: BoxFit.cover,
-                    placeholder: (context, url) =>
-                        const Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) =>
-                        const Icon(Icons.error),
-                  );
-                }
-              },
+          Container(
+            color: Colors.grey[200],
+            child: AspectRatio(
+              aspectRatio: 3 / 4, // Typical portrait aspect ratio
+              child: PageView.builder(
+                controller: _pageController,
+                itemCount: mediaItems.length,
+                itemBuilder: (context, index) {
+                  final item = mediaItems[index];
+                  if (item.type == MediaType.video) {
+                    return VideoItemWidget(videoUrl: item.url);
+                  } else {
+                    return CachedNetworkImage(
+                      imageUrl: item.url,
+                      fit: BoxFit.contain,
+                      placeholder: (context, url) =>
+                          const Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) =>
+                          const Icon(Icons.error),
+                    );
+                  }
+                },
+              ),
             ),
           ),
           const SizedBox(height: 8),

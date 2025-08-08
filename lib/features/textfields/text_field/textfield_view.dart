@@ -20,7 +20,7 @@ class PlaygroundDemoView extends GetView<PlaygroundDemoController> {
                   controller: controller.playgroundController,
                   topTitle: controller.topTitle.value,
                   isPassword: controller.isPw.value,
-                  hintText: 'Custom${controller.placeholderIsStar.value ? '*' : ''}TextField',
+                  hintText: 'Custom TextField${controller.placeholderIsStar.value ? '*' : ''}',
                   errorText: controller.errorText.value,
               )),
             const SizedBox(height: 24),

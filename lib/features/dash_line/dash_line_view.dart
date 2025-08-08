@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:secondchapter_pro/components/dashed_line_painter.dart';
+import 'package:secondchapter_pro/features/dash_line/components/dashed_line_painter.dart';
 import 'dash_line_controller.dart';
 
 class DashLineView extends GetView<DashLineController> {

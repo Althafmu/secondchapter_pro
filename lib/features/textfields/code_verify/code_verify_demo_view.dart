@@ -13,10 +13,22 @@ class CodeVerifyDemoView extends GetView<CodeVerifyDemoController> {
       appBar: AppBar(title: const Text('Verification Code Field')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomTextField(
-          hintText: 'Enter 6-digit verification code*',
-          keyboardType: TextInputType.number,
-          suffix: TextFieldSuffixButton(text: 'Verify', onPressed: controller.verifyCode),
+        child: Column(
+          children: [
+            const Text(
+              'Enter the 6-digit verification code sent to your phone number.\nthe verification code is 111005.',
+            ),
+            const SizedBox(height: 24),
+            CustomTextField(
+              hintText: 'Enter 6-digit verification code*',
+              controller: controller.verifiedPhoneController,
+              keyboardType: TextInputType.number,
+              suffix: TextFieldSuffixButton(
+                text: 'Verify',
+                onPressed: controller.verifyCode,
+              ),
+            ),
+          ],
         ),
       ),
     );

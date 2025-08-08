@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:secondchapter_pro/components/custom_button.dart';
 import 'package:secondchapter_pro/components/custom_text_field.dart';
 import 'package:secondchapter_pro/components/text_field_suffix_button.dart';
 import 'verified_phone_demo_controller.dart';
@@ -13,13 +14,30 @@ class VerifiedPhoneDemoView extends GetView<VerifiedPhoneDemoController> {
       appBar: AppBar(title: const Text('Phone Number Verified')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: CustomTextField(
-          controller: controller.verifiedPhoneController,
-          topTitle: '전화번호',
-          readOnly: true, // Make the field non-editable
-          hintText: '',
-          // The button is disabled because onPressed is null
-          suffix: const TextFieldSuffixButton(text: '인증완료'),
+        child: Column(
+          children: [
+            Obx(
+              () => CustomTextField(
+                controller: controller.verifiedPhoneController,
+                topTitle: controller.topTitle.value,
+                readOnly: true, // Make the field non-editable
+                hintText:'',
+                // The button is disabled because onPressed is null
+                suffix: const TextFieldSuffixButton(text: 'verify'),
+              ),
+            ),
+            SizedBox(height: 24),
+            CustomButton(
+              text: 'topTitleString',
+              onPressed: controller.toggleTopTitle,
+            ),
+            const SizedBox(height: 12),
+            CustomButton(
+              text: 'placeholderIsStar: false',
+              onPressed: controller.togglePlaceholderIsStar,
+              
+            ),
+          ],
         ),
       ),
     );

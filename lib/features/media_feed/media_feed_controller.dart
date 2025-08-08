@@ -12,7 +12,6 @@ class MediaFeedController extends GetxController {
 
   void fetchMediaPosts() {
     // In a real app, you'd fetch this from an API.
-    // We are using mock data based on the screenshots.
     // TODO: Replace with your actual asset paths and URLs.
     final mockPosts = [
       MediaPost(
@@ -33,7 +32,7 @@ class MediaFeedController extends GetxController {
             'If there is only one image or video, infinite scroll is not enabled. Of course, you can also disable it for multiple items if you want.',
         mediaItems: [
           // IMPORTANT: Add a video to your assets/videos folder first
-          MediaItem(url: 'assets/videos/vid1.webm', type: MediaType.video),
+          MediaItem(url: 'assets/videos/vid3.mp4', type: MediaType.video),
         ],
       ),
       MediaPost(

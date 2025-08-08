@@ -11,7 +11,7 @@ class PlaygroundDemoController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    playgroundController = TextEditingController(text: 'CustomErrStarTextFieldView');
+    playgroundController = TextEditingController(text: 'this is a sample text');
   }
 
   void toggleTopTitle() => topTitle.value = topTitle.value == null ? 'topTitleString' : null;
