@@ -20,11 +20,11 @@ class HomeView extends GetView<HomeController> {
           _buildSectionHeader('Dialog'),
           _buildListItem(
             'custom_check_dialog',
-            onTap: controller.showCustomCheckDialog,
+            onTap: controller.showTheCheckDialog,
           ),
           _buildListItem(
             'custom_clear_dialog',
-            onTap: controller.showCustomClearDialog,
+            onTap: controller.showTheClearDialog,
           ),
           _buildListItem(
             'custom_text_dialog',

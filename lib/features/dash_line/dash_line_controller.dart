@@ -4,7 +4,6 @@ import 'dart:math';
 
 class DashLineController extends GetxController {
   final axis = Axis.vertical.obs;
-  // Renamed variables for clarity
   final dashThickness = 2.0.obs;
   final dashLength = 4.0.obs;
   final leadingPadding = 0.0.obs;
@@ -19,7 +18,6 @@ class DashLineController extends GetxController {
     color.value = Colors.primaries[Random().nextInt(Colors.primaries.length)];
   }
 
-  // Updated methods to match new variable names
   void updateDashThickness(double val) => dashThickness.value = max(1.0, dashThickness.value + val);
   void updateDashLength(double val) => dashLength.value = max(1.0, dashLength.value + val);
   void updateLeadingPadding(double val) => leadingPadding.value = max(0.0, leadingPadding.value + val);

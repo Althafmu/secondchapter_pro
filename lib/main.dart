@@ -7,8 +7,6 @@ import 'package:secondchapter_pro/utils/theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-
-  // Lazily register the service. It won't be created until it's needed.
   Get.lazyPut(() => InitializationService());
 
   runApp(
@@ -18,7 +16,7 @@ void main() {
       theme: AppTheme.lightTheme,
       darkTheme: AppTheme.darkTheme,
       themeMode: ThemeMode
-          .system, // Automatically switch between light and dark themes
+          .system, 
       debugShowCheckedModeBanner: false,
       getPages: AppPages.routes,
     ),

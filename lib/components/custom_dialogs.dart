@@ -1,151 +1,156 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:secondchapter_pro/components/custom_button.dart';
 
+/// A helper class to show consistent, styled dialogs throughout the app.
 class DialogHelper {
-  // Private constructor to prevent instantiation
+  // Private constructor to prevent instantiation.
   DialogHelper._();
 
-  /// Shows a standard confirmation dialog
-  static void showCheckDialog() {
+  /// The base method for showing all custom dialogs. It handles the common
+  /// layout, and the public methods provide the specific buttons.
+  static void _showBaseDialog({
+    required String title,
+    String? subText,
+    required List<Widget> actions,
+    bool barrierDismissible = false,
+  }) {
     Get.dialog(
-      AlertDialog(
-        title: const Text('Check Dialog'),
-        content: const Text('This is a custom check dialog.'),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(result: false), // Return false on cancel
-            child: const Text('Cancel'),
+      Dialog(
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16.0)),
+        child: Padding(
+          padding: const EdgeInsets.all(24.0),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+              ),
+              if (subText != null) ...[
+                const SizedBox(height: 16),
+                Text(
+                  subText,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontSize: 16, color: Colors.black54),
+                ),
+              ],
+              const SizedBox(height: 24),
+              // The buttons are passed in as a list of widgets
+              ...actions,
+            ],
           ),
-          TextButton(
-            onPressed: () => Get.back(result: true), // Return true on OK
-            child: const Text('OK'),
-          ),
-        ],
+        ),
       ),
+      barrierDismissible: barrierDismissible,
     );
   }
 
-  /// Shows a simple info dialog
-  static void showClearDialog() {
-    Get.dialog(
-      AlertDialog(
-        title: const Text('Clear Dialog'),
-        content: const Text('This dialog has been cleared.'),
-        actions: [
-          TextButton(onPressed: () => Get.back(), child: const Text('Close')),
-        ],
-      ),
+  /// Shows a dialog with a single action button (like an alert).
+  /// Matches: `custom_check_dialog`
+  static void showCheckDialog({
+    required String title,
+    String? subText,
+    required VoidCallback onTapCheck,
+    String checkText = 'OK',
+  }) {
+    _showBaseDialog(
+      title: title,
+      subText: subText,
+      actions: [
+        CustomButton(
+          onPressed: () {
+            Get.back();
+            onTapCheck();
+          },
+          color: const Color(0xFF333333), // Dark grey / black
+          text: 'checkText',
+        ),
+      ],
     );
   }
 
-  /// A more generic confirmation dialog for reusability
-  static Future<bool?> showConfirmationDialog({
-    String title = 'Are you sure?',
-    String content = 'Do you want to proceed?',
-    String confirmText = 'Confirm',
-    String cancelText = 'Cancel',
-  }) async {
-    return await Get.dialog<bool>(
-      AlertDialog(
-        title: Text(title),
-        content: Text(content),
-        actions: [
-          TextButton(
-            onPressed: () => Get.back(result: false),
-            child: Text(cancelText),
-          ),
-          TextButton(
-            onPressed: () => Get.back(result: true),
-            child: Text(confirmText),
-          ),
-        ],
-      ),
-    );
-  }
-
-  static void showCustomTextDialog({
-    required String titleText,
+  /// Shows a dialog with two buttons, for a destructive action.
+  /// Matches: `custom_clear_dialog`
+  static void showClearDialog({
+    required String title,
     String? subText,
     required VoidCallback onTapCheck,
     VoidCallback? onTapCancel,
     String checkText = 'OK',
     String cancelText = 'Cancel',
   }) {
-    Get.dialog(
-      Dialog(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(16.0),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min, // Use min size for the column
-            children: [
-              Text(
-                titleText,
-                style: const TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                ),
+    _showBaseDialog(
+      title: title,
+      subText: subText,
+      actions: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomButton(
+                onPressed: () {
+                  Get.back();
+                  onTapCancel?.call();
+                },
+                color: Colors.grey.shade400,
+                text: cancelText,),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: CustomButton(
+                onPressed: () {
+                  Get.back();
+                  onTapCheck();
+                },
+                color: Colors.redAccent, // Red for "clear" or "delete"
+                text: checkText,),
+            ),
+          ],
+        )
+      ],
+    );
+  }
+  
+  /// Shows a dialog with two buttons, for a standard confirmation.
+  /// Matches: `custom_text_dialog`
+  static void showCustomTextDialog({
+    required String title,
+    String? subText,
+    required VoidCallback onTapCheck,
+    VoidCallback? onTapCancel,
+    String checkText = 'OK',
+    String cancelText = 'Cancel',
+  }) {
+    _showBaseDialog(
+      title: title,
+      subText: subText,
+      actions: [
+        Row(
+          children: [
+            Expanded(
+              child: CustomButton(
+                onPressed: () {
+                  Get.back();
+                  onTapCancel?.call();
+                },
+                color: Colors.grey.shade400,
+                 text:'cancelText',
               ),
-              const SizedBox(height: 16),
-              if (subText != null) ...[
-                Text(
-                  subText,
-                  textAlign: TextAlign.center,
-                  style: const TextStyle(fontSize: 16),
-                ),
-                const SizedBox(height: 24),
-              ],
-
-              // Buttons Row
-              Row(
-                children: [
-                  // Cancel Button
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey.shade400,
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      onPressed: () {
-                        Get.back(); // Close the dialog
-                        onTapCancel
-                            ?.call(); // Execute the cancel callback if it exists
-                      },
-                      child: Text(cancelText),
-                    ),
-                  ),
-                  const SizedBox(width: 16),
-
-                  // OK/Check Button
-                  Expanded(
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.green, // As per screenshot
-                        foregroundColor: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10.0),
-                        ),
-                      ),
-                      onPressed: () {
-                        Get.back(); // Close the dialog
-                        onTapCheck(); // Execute the check callback
-                      },
-                      child: Text(checkText),
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      ),
-      // Set to false to prevent dismissing dialog by tapping outside
-      barrierDismissible: false,
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: CustomButton(
+                onPressed: () {
+                  Get.back();
+                  onTapCheck();
+                },
+                color: Colors.green, // Green for positive confirmation
+                text: checkText,),
+            ),
+          ],
+        )
+      ],
     );
   }
 }

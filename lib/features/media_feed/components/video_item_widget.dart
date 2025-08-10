@@ -71,7 +71,6 @@ class _VideoItemWidgetState extends State<VideoItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // ADDED: Wrap the entire widget with VisibilityDetector
     return VisibilityDetector(
       key: Key(widget.videoUrl), // A unique key for each video
       // This function is called whenever the visibility of the widget changes

@@ -6,25 +6,43 @@ import 'package:secondchapter_pro/components/custom_toast.dart';
 class HomeController extends GetxController {
   // --- Dialogs ---
 
-  void showCustomCheckDialog() {
-    DialogHelper.showCheckDialog();
+  void showTheCheckDialog() {
+    DialogHelper.showCheckDialog(
+      title: 'CustomCheckDialog',
+      subText: 'titleText = Top alert title\nsubText = Body...',
+      onTapCheck: () =>
+          ToastHelper.showBottomToast(title: 'Action', message: 'OK Pressed!'),
+    );
   }
 
-  void showCustomClearDialog() {
-    DialogHelper.showClearDialog();
+  void showTheClearDialog() {
+    DialogHelper.showClearDialog(
+      title: 'custom_clear_dialog',
+      subText: 'subText = Body...',
+      onTapCheck: () => ToastHelper.showBottomToast(
+        title: 'Action',
+        message: 'OK (Clear) Pressed!',
+      ),
+      onTapCancel: () => ToastHelper.showBottomToast(
+        title: 'Action',
+        message: 'Cancel Pressed!',
+      ),
+    );
   }
+
   void showTheCustomTextDialog() {
     DialogHelper.showCustomTextDialog(
-      titleText: 'Top alert title',
-      subText: 'subText = Body\nonTapCancel = ...\nonTapCheck = ...', // Using \n for new lines
-      checkText: 'OK',
-      cancelText: 'Cancel',
-      onTapCheck: () {
-        ToastHelper.showBottomToast(title: 'Success', message: 'OK button was pressed!');
-      },
-      onTapCancel: () {
-        ToastHelper.showBottomToast(title: 'Cancelled', message: 'Cancel button was pressed.');
-      },
+      title: 'custom_text_dialog',
+      subText: 'subText = Body...',
+
+      onTapCheck: () => ToastHelper.showBottomToast(
+        title: 'Action',
+        message: 'OK (Confirm) Pressed!',
+      ),
+      onTapCancel: () => ToastHelper.showBottomToast(
+        title: 'Action',
+        message: 'Cancel Pressed!',
+      ),
     );
   }
 
@@ -53,7 +71,6 @@ class HomeController extends GetxController {
   void openPhoneNumberVerification() {
     Get.toNamed(Routes.PHONE_VERIFICATION);
   }
-  
 
   void openDashLinePage() {
     Get.toNamed(Routes.DASH_LINE);
@@ -62,7 +79,8 @@ class HomeController extends GetxController {
   void openMediaSliderPage() {
     Get.toNamed(Routes.MEDIA_FEED);
   }
+
   void openCustomIndicatorPage() {
-  Get.toNamed(Routes.CUSTOM_INDICATOR);
-}
+    Get.toNamed(Routes.CUSTOM_INDICATOR);
+  }
 }

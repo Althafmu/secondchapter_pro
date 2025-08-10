@@ -11,8 +11,6 @@ class MediaFeedController extends GetxController {
   }
 
   void fetchMediaPosts() {
-    // In a real app, you'd fetch this from an API.
-    // TODO: Replace with your actual asset paths and URLs.
     final mockPosts = [
       MediaPost(
         id: 'post1',
@@ -21,7 +19,7 @@ class MediaFeedController extends GetxController {
         mediaItems: [
           MediaItem(
             url:
-                'https://picsum.photos/400/400?random=1', // Replace with a real image URL
+                'https://picsum.photos/400/400?random=1', 
             type: MediaType.image,
           ),
         ],
@@ -31,7 +29,6 @@ class MediaFeedController extends GetxController {
         description:
             'If there is only one image or video, infinite scroll is not enabled. Of course, you can also disable it for multiple items if you want.',
         mediaItems: [
-          // IMPORTANT: Add a video to your assets/videos folder first
           MediaItem(url: 'assets/videos/vid3.mp4', type: MediaType.video),
         ],
       ),
@@ -40,7 +37,6 @@ class MediaFeedController extends GetxController {
         description:
             'With swipe gestures, when you move to the next slide, the previous video automatically stops.',
         mediaItems: [
-          // IMPORTANT: Add another video to your assets/videos folder
           MediaItem(url: 'assets/videos/vid2.mp4', type: MediaType.video),
           MediaItem(
             url:

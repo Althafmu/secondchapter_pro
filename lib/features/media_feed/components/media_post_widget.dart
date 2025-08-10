@@ -48,7 +48,7 @@ class _MediaPostWidgetState extends State<MediaPostWidget> {
           Container(
             color: Colors.grey[200],
             child: AspectRatio(
-              aspectRatio: 3 / 4, // Typical portrait aspect ratio
+              aspectRatio: 3 / 4, 
               child: PageView.builder(
                 controller: _pageController,
                 itemCount: mediaItems.length,

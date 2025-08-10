@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class DashedLinePainter extends CustomPainter {
   final Axis axis;
-  final double dashThickness; // This will now consistently be the thickness
-  final double dashLength;    // This will now consistently be the length of the dash
+  final double dashThickness; 
+  final double dashLength;    
   final double leadingPadding;
   final double trailingPadding;
   final Color color;

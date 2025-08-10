@@ -10,13 +10,11 @@ enum VerificationState {
 }
 
 class PhoneVerificationController extends GetxController {
-  // --- State Variables ---
   final Rx<VerificationState> currentState = VerificationState.initial.obs;
   late TextEditingController phoneController;
   late TextEditingController otpController;
   String verifiedPhoneNumber = '';
 
-  // In a real app, this would be sent via SMS. From your screenshot, we use a fixed code.
   final String correctOtp = '111005';
 
   @override
@@ -25,8 +23,6 @@ class PhoneVerificationController extends GetxController {
     phoneController = TextEditingController();
     otpController = TextEditingController();
   }
-
-  // --- Actions ---
 
   /// Validates the phone number and requests an OTP.
   void requestOtp() {
@@ -55,8 +51,6 @@ class PhoneVerificationController extends GetxController {
     currentState.value = VerificationState.initial;
     otpController.clear();
   }
-
-  // --- Private Helper ---
 
   /// Simple validation for Indian mobile numbers (10 digits, starts with 6-9).
   bool _isValidIndianPhoneNumber(String number) {

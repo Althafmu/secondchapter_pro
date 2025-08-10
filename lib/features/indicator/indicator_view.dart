@@ -22,32 +22,31 @@ class IndicatorDemoView extends GetView<IndicatorDemoController> {
               style: TextStyle(fontSize: 16, color: Colors.black87),
             ),
             const SizedBox(height: 40),
-
-            // Obx makes this section reactive to controller changes
             Obx(() {
-              // Show countdown text only when loading
               if (controller.isLoading.value) {
                 return Text(
                   'Ends in 0:0${controller.countdownSeconds.value} seconds',
-                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: const TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 );
               }
-              // Return an empty widget when not loading
               return const SizedBox(height: 21); // To maintain space
             }),
             const SizedBox(height: 16),
 
-            // Obx makes the button reactive (for disabling)
-            Obx(() => CustomButton(
-                  text: 'Click Me!!',
-                  // Disable button by passing null to onPressed when loading
-                  onPressed: controller.isLoading.value ? null : controller.startLoadingProcess,
-                )),
+            Obx(
+              () => CustomButton(
+                text: 'Click Me!!',
+                onPressed: controller.isLoading.value
+                    ? null
+                    : controller.startLoadingProcess,
+              ),
+            ),
             const SizedBox(height: 60),
 
-            // Obx makes the indicator reactive
             Obx(() {
-              // Show indicator only when loading
               if (controller.isLoading.value) {
                 return const CustomIndicator();
               }
