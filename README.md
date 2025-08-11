@@ -61,3 +61,24 @@ lib/
 ├── utils/
 │   ├── app_utils.dart         # Helper functions
 │   └── theme.dart             # Theming and styling
+
+🚀 Getting Started
+Prerequisites
+Flutter SDK 3.x+, Dart 3.x
+
+Android Studio or VS Code
+
+Android/iOS device or emulator
+
+Installation
+bash
+Copy
+Edit
+# Clone the repository
+git clone https://github.com/<your-username>/<your-repo>.git
+
+# Get dependencies
+flutter pub get
+
+# Run the app
+flutter run
