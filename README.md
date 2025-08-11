@@ -3,7 +3,7 @@
 [![Flutter](https://img.shields.io/badge/Flutter-3.x-blue.svg)](https://flutter.dev/)  
 [![GetX](https://img.shields.io/badge/GetX-4.6.x-8A2BE2.svg)](https://pub.dev/packages/get)  
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)  
-[![Download APK](https://img.shields.io/badge/Download-APK-blue.svg)]([(https://drive.google.com/file/d/1CEV4Fbhz0zsqFTwo5wdiC3NFNDv-WqN5/view?usp=drivesdk)]()  
+[![Download APK](https://img.shields.io/badge/Download-APK-blue.svg)](https://drive.google.com/file/d/1CEV4Fbhz0zsqFTwo5wdiC3NFNDv-WqN5/view?usp=drivesdk)
 
 A **modular Flutter application** showcasing **reusable UI components** with **GetX** for state management, navigation, and dependency injection.  
 The app follows a **feature-first architecture** with a clean separation of concerns, making it easy to scale and maintain.
